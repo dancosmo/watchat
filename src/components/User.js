@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState} from "react";
 import { db } from "../firebase";
-import { onSnapshot, doc, getDoc, addDoc, Timestamp, collection} from "firebase/firestore";
+import { onSnapshot, doc} from "firebase/firestore";
 import OnlineStatus from "./svg/OnlineStatus";
 import ListGroup from "react-bootstrap/ListGroup";
 import Img from "./icons/user.png";

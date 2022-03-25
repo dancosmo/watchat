@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
-import Button from "react-bootstrap/button";
+import Button from "react-bootstrap/Button";
 import FormControl from "react-bootstrap/FormControl";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
