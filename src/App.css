@@ -1,38 +1,240 @@
-.App {
+body {
+  background: darkgray !important;
+}
+
+.flex-home{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.mynav {
+  align-items: center;
+  padding: 0px 20px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  font-size: 3rem;
+}
+
+.profile-container {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .profile-container {
+    flex-wrap: wrap;
+  }
+}
+
+.img-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.img-container:hover {
+  transition: 0.5s ease-in-out all;
+  opacity: 1;
+}
+
+.img-container img {
+  max-width: 250px;
+}
+
+.avatar-overlay {
+  opacity: 0.7;
+  position: absolute;
+}
+
+.avatar-overlay:hover {
+  transition: 0.5s ease-in-out all;
+  opacity: 1;
+}
+
+.users-container {
+  height: 90vh;
+  overflow-y: scroll;
+  margin-left: 0;
+  width: 200px;
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .users-container {
+    width: 0;
+  }
+}
+
+.no-user-container {
+  height: 90vh;
+  margin-left: 0;
+  width: 200px;
+  border-radius: 5px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.users-container .list-group .list-group-item {
+    display: block;
+    justify-content: space-between;
+    overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.users-container .list-group .list-group-item:hover {
+    cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+.users-container .list-group .list-group-item img {
+    width: 30px;
+    height: 30px;
+}
+.users-container .list-group .list-group-item label:hover {
+  cursor:pointer;
+}
+
+.users-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.users-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.users-container::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+.container-box {
+  position:absolute;
+  border-radius: 10px;
+  width: 320px;
+  bottom: 0;
+  color: white;
+  z-index: 999;
+}
+
+.message-form {
+  display: flex;
+}
+
+.message-form form {
+  width: 100%;
+}
+
+.messages-container {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.messages-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.messages-container::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+.message-form input {
+  display: inline-flex;
+  width: 100%;
+}
+
+.message-background {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items:flex-end;
+  border-radius: 5px;
+  padding: 10px 10px 10px 10px;
+  margin-top: 5px;
+  overflow-wrap: anywhere;
+}
+
+.selected-user {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.inbox-peek{
   color: white;
+  padding: 5px 5px 5px 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.user-chat-box:focus{
+  box-shadow: none !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-toggler-icon{
+  color: white !important;
+}
+
+.navbar-toggler{
+  border-color: white !important;
+}
+
+.video-search-container{
+  flex-basis: 80vw;
+}
+
+.video-list{
+  max-height: 75vh;
+  overflow-y: scroll;
+}
+
+.video-list::-webkit-scrollbar {
+  width: 10px;
+}
+
+.video-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.video-list::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+.video-detail {
+  height: 75vh;
+  overflow-y: scroll;
+}
+
+.video-detail::-webkit-scrollbar {
+  width: 10px;
+}
+
+.video-detail::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+.video-detail::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+.video-invitation{
+  background-color: transparent;
+  font-weight: bold;
+  border-radius: 10px;
 }
