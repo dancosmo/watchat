@@ -17,10 +17,10 @@ import { useNavigate } from "react-router-dom";
 const Profile = () => {
   const [img, setImg] = useState("");
   const [user, setUser] = useState("");
-  const navigate = useNavigate(); 
   const userData = useContext(AuthContext);
   const { theme } = useContext(AuthContext);
-
+  const navigate = useNavigate(); 
+ 
   const userTimeStamp = userData.user.metadata.creationTime;
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const Profile = () => {
       }
     };
     getUserName();
-  }, [img]);
+  }, [img, user.avatarPath]);
 
   const deleteUserAvatar = async () => {
     try {

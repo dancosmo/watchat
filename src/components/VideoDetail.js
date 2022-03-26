@@ -16,7 +16,8 @@ const VideoDetail = ({video}) => {
             })
         }
         updateCurrentVideo();
-    },[video])
+    },[video, user.uid])
+    
     const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`
     return (
         <Container className='video-detail'>

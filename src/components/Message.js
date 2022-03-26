@@ -21,7 +21,7 @@ const Message = ({ msg, user1, videoInvite }) => {
 
   const renderMessage = () =>{
     const message = msg.text;
-    if(message instanceof Object && user1 != msg.from){
+    if(message instanceof Object && user1 !== msg.from){
       return <div>You've been invited to watch a video <button className="video-invitation" onClick={()=> confirmVideo()}>Watch</button></div>;
     }
     else if (message instanceof Object && user1 === msg.from){

@@ -8,7 +8,7 @@ const VideoItem = ({video, selectedVideo}) => {
 
     return (
         <ListGroup.Item onClick={() =>selectedVideo(video)} style={{backgroundColor:`${theme.background2}`, color:`${theme.color}`, display:'flex', cursor:'pointer'}}>
-            <img src={video.snippet.thumbnails.medium.url}></img>
+            <img src={video.snippet.thumbnails.medium.url} alt="video-thumbnal"></img>
             <Container style={{color:`${theme.text}`}}>
                 <div style={{fontWeight:`bold`}}>{video.snippet.title}</div>
                 <div>Channel: {video.snippet.channelTitle}</div>
