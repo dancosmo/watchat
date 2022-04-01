@@ -21,7 +21,7 @@ const Register = () => {
     name: "",
     email: "",
     password: "",
-    error: null,
+    error: "",
     loading: false,
   });
 
@@ -44,10 +44,16 @@ const Register = () => {
     if (!name || !email || !password) {
       setData({ ...data, error: "All fields are required" });
       console.log(error);
+      return;
     }
     //-----------------------------------------------------------------------------------------------------
-    else {
-      //
+    else if (name.length > 12){
+      setData({...data, error: "name must have less than 12 characters" });
+      console.log(error);
+      return;
+    }
+    //-----------------------------------------------------------------------------------------------------
+    else if(error === null){
       setData({ ...data, error: null, loading: true });
     }
     try {
