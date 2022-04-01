@@ -9,7 +9,6 @@ import VideoDetail from "./VideoDetail";
 const Home = () => {
   const { user, theme } = useContext(AuthContext);
   const [videos, search] = useVideos("coding");
-
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const video = (data) => {
@@ -31,14 +30,12 @@ const Home = () => {
   return (
     <div className="flex-home">
       {user ? (
-        <div>
           <Messenger videoCallback={videoCallback}/>
-        </div>
       ) : (
         <div
           className="no-user-container"
           style={{
-            color: `${theme.text},`,
+            color:`${theme.text}`,
             backgroundColor: `${theme.background2}`,
           }}
         >

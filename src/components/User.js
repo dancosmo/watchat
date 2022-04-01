@@ -30,7 +30,7 @@ const User = ({ user1, user, selectUser, chat }) => {
   }
   return (
     <ListGroup.Item style={{backgroundColor:`${theme.background2}`}}
-      className= {chat.uid === user.uid ? "selected-user" : null}
+      className= {chat?.uid === user.uid ? "selected-user" : null}
       onClick={() => selectUser(user)}
     >
       <img alt="avatar" src={user.avatar || Img}></img>

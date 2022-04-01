@@ -9,6 +9,7 @@ import Register from "./components/Register";
 import LogIn from "./components/LogIn";
 import Messenger from "./components/Messenger";
 import Profile from "./components/Profile";
+import Footer from "./components/Footer";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route exact path="/messenger" element={<Messenger/>}></Route>
                 <Route exact path="/profile" element={<Profile/>}></Route>
             </Routes>
+            <Footer/>
         </BrowserRouter>
     </AuthProvider>
   );
