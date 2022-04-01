@@ -157,7 +157,7 @@ const MessengerForm = ({selectedUser, user1, inviteToWatchVideo }) => {
                 onClick={() => inviteToWatch()}
               >
                 <Invite />
-                Invite to Watch
+                 Invite
               </button>
               <Button
                 onClick={() => {setOpen(!open); hideArrows()}}
@@ -167,6 +167,7 @@ const MessengerForm = ({selectedUser, user1, inviteToWatchVideo }) => {
                 style={{
                   backgroundColor: `${theme.background}`,
                   borderColor: `${theme.border}`,
+                  borderRadius:"50px"
                 }}
                 
               >

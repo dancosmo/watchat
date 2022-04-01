@@ -33,14 +33,15 @@ const User = ({ user1, user, selectUser, chat }) => {
       className= {chat?.uid === user.uid ? "selected-user" : null}
       onClick={() => selectUser(user)}
     >
+      <div>
       <img alt="avatar" src={user.avatar || Img}></img>
       <label style={{color:`${theme.text}`}} className="mx-2">{user.name}</label>
-      <label>
-        <OnlineStatus status={user.isOnline} />
-      </label>
-      
+      </div>
       {data?.from !== user1 && data?.unread && (<NewMessage color={theme.text}/>) }
       <div style={{color:`${theme.text}`}} className="inbox-peek" >{data ? (renderInboxPeek()) : null }</div>
+      <div>
+        <OnlineStatus status={user.isOnline} />
+      </div>
     </ListGroup.Item>
   );
 };
