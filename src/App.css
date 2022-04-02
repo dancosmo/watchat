@@ -96,9 +96,10 @@ body {
     align-self: center;
     max-height: 398.5px;
   }
-  .video-list .list-group-item {
+  .users-container .list-group .list-group-item {
     flex-wrap: wrap;
   }
+
 }
 
 .users-container .list-group .list-group-item {
@@ -251,7 +252,9 @@ body {
 
 @media only screen and (max-width: 768px) {
   .video-search-container {
-    max-width: 100%;
+    margin-top: 2%;
+    align-self: center;
+    max-width: 90%;
   }
 }
 
@@ -305,4 +308,10 @@ body {
 .footer {
   margin-top: 1%;
   text-align: right;
+}
+
+@media only screen and (max-width: 768px) {
+ .footer{
+   margin-top: 435px;
+ }
 }

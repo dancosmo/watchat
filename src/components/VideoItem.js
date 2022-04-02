@@ -7,7 +7,7 @@ const VideoItem = ({video, selectedVideo}) => {
     const {theme} = useContext(AuthContext);
 
     return (
-        <ListGroup.Item onClick={() =>selectedVideo(video)} style={{backgroundColor:`${theme.background2}`, color:`${theme.color}`, display:'flex', cursor:'pointer'}}>
+        <ListGroup.Item onClick={() =>selectedVideo(video)} style={{backgroundColor:`${theme.background2}`, color:`${theme.color}`, display:'flex', cursor:'pointer', flexWrap:"wrap"}}>
             <img src={video.snippet.thumbnails.medium.url} alt="video-thumbnal"></img>
             <Container style={{color:`${theme.text}`}}>
                 <div style={{fontWeight:`bold`}}>{video.snippet.title}</div>
