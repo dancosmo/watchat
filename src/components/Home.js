@@ -36,7 +36,7 @@ const Home = () => {
           className="no-user-container"
           style={{
             color:`${theme.text}`,
-            backgroundColor: `${theme.background2}`,
+            backgroundColor: `${theme.background}`,
           }}
         >
           Log In to join Chat

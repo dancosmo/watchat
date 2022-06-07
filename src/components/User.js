@@ -29,7 +29,7 @@ const User = ({ user1, user, selectUser, chat }) => {
       else return message;
   }
   return (
-    <ListGroup.Item style={{backgroundColor:`${theme.background2}`}}
+    <ListGroup.Item style={{backgroundColor:`${theme.background}`}}
       className= {chat?.uid === user.uid ? "selected-user" : null}
       onClick={() => selectUser(user)}
     >

@@ -104,6 +104,7 @@ const Register = () => {
             placeholder="Enter name"
             value={name}
             onChange={inputChange}
+            autoComplete="on"
           />
         </Form.Group>
 
@@ -115,6 +116,7 @@ const Register = () => {
             placeholder="Enter email"
             value={email}
             onChange={inputChange}
+            autoComplete="on"
           />
         </Form.Group>
 
@@ -126,11 +128,12 @@ const Register = () => {
             placeholder="Password"
             value={password}
             onChange={inputChange}
+            autoComplete="off"
           />
         </Form.Group>
         <div className="error">{error}</div>
         <Container className="text-center">
-          <Button style={{backgroundColor:`${theme.background}`, borderColor:`${theme.border}`}} disabled={loading} variant="success" type="submit">
+          <Button style={{backgroundColor:`${theme.background}`, borderColor:`${theme.border}`, color:`${theme.text}`}} disabled={loading} variant="success" type="submit">
             {loading ? "Creating..." : "Submit"}
           </Button>
         </Container>

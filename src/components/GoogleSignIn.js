@@ -33,7 +33,7 @@ function GoogleSignIn() {
   return (
     <div>
       <Container>
-        <Button style={{backgroundColor:`${theme.background}`, borderColor:`${theme.border}`}} variant="success" onClick={signInWithGoogle}>
+        <Button style={{backgroundColor:`${theme.background}`, borderColor:`${theme.border}`, color:`${theme.text}`}} variant="success" onClick={signInWithGoogle}>
           Google Sign In
         </Button>
       </Container>

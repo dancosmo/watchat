@@ -9,10 +9,9 @@ const AuthProvider = ({children}) =>{
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [theme, setTheme] = useState({
-        text: "black",
-        background: "grey",
+        text: "white",
+        background: "rgba(255, 255, 255, 0.4)",
         border: "rgba(255, 255, 255, 0.4)",
-        background2:"rgba(255, 255, 255, 0.4)",
         navbar:"navbar-light"
     });
 

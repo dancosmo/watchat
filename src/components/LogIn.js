@@ -92,6 +92,7 @@ const LogIn = () => {
             placeholder="Enter email"
             value={email}
             onChange={inputChange}
+            autoComplete="on"
           />
           <Form.Text className="text-muted">
           </Form.Text>
@@ -105,6 +106,7 @@ const LogIn = () => {
             placeholder="Password"
             value={password}
             onChange={inputChange}
+            autoComplete="off"
           />
         </Form.Group>
         <div className="error">{error}</div>
@@ -113,7 +115,7 @@ const LogIn = () => {
           disabled={loading}
           variant="success"
           type="submit"
-          style={{backgroundColor:`${theme.background}`, borderColor:`${theme.border}`}}
+          style={{backgroundColor:`${theme.background}`, borderColor:`${theme.border}`, color:`${theme.text}`}}
         >
           {loading ? "Logging in..." : 'Login'}
         </Button>

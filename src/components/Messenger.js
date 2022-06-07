@@ -65,7 +65,7 @@ const Messenger = ({ videoCallback }) => {
         <ListGroup>{renderUsers()}</ListGroup>
       </div>
       <div
-        style={{ backgroundColor: `${theme.background2}` }}
+        style={{ backgroundColor: `${theme.background}` }}
         className="message-form-container px-2 py-2"
       >
         <MessengerForm

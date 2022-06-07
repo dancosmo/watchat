@@ -4,7 +4,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBkep5nZFqS_VDIl9sow8fYu1gG9D-6PpQ",
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: "watchat-a226d.firebaseapp.com",
   projectId: "watchat-a226d",
   databaseURL: "http://watchat-a226d.firebaseio.com",
