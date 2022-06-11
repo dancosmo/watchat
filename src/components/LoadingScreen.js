@@ -2,7 +2,7 @@ import React from 'react';
 
 const LoadingScreen = () => {
     return(
-        <div className='loading-screen'>
+        <div style={{color:"white"}} className='loading-screen'>
             Loading...
         </div>
     )
