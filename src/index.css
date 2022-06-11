@@ -1,7 +1,12 @@
+html{
+  height: 100%;
+}
 body {
-  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 45%, rgba(2,0,36,1) 100%);
+  min-height: 100%;
+  background-color: #4158D0;
+  background: linear-gradient( 110.1deg,  rgba(30,2,83,1) 44.2%, rgba(198,55,160,1) 138.2% );
   margin: 0;
-  font-family:'Roboto Condensed', sans-serif !important;
+  font-family: 'Sora', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

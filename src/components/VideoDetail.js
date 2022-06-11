@@ -22,7 +22,7 @@ const VideoDetail = ({ video }) => {
   return (
     <div className="video-detail">
       <iframe
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "70vh" }}
         title="video-player"
         src={videoSrc}
       />

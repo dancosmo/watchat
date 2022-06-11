@@ -12,7 +12,7 @@ const AuthProvider = ({children}) =>{
         text: "white",
         background: "rgba(255, 255, 255, 0.4)",
         border: "rgba(255, 255, 255, 0.4)",
-        navbar:"navbar-light"
+        navbar:"navbar-dark"
     });
 
     useEffect(()=>{

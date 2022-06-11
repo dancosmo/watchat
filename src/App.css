@@ -1,8 +1,6 @@
-
 .flex-home {
   display: flex;
   justify-content: space-between;
-  height: 85vh;
 }
 
 @media only screen and (max-width: 768px) {
@@ -257,37 +255,38 @@
 
 .video-list {
   max-height: 80vh;
-  overflow-y: scroll;
+  overflow-y: overlay;
 }
 
 .video-list::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 .video-list::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
+  box-shadow: inset 0 0 5px white;
   border-radius: 10px;
 }
 .video-list::-webkit-scrollbar-thumb {
-  background: grey;
+  background: white;
   border-radius: 10px;
 }
 
 .video-detail {
   overflow-y: scroll;
   flex-basis: 100%;
+  min-height: 75vh;
 }
 
 .video-detail::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
 
 .video-detail::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
+  box-shadow: inset 0 0 5px white;
   border-radius: 10px;
 }
 .video-detail::-webkit-scrollbar-thumb {
-  background: grey;
+  background: white;
   border-radius: 10px;
 }
 
@@ -302,6 +301,10 @@
   background-color: transparent;
 }
 
+.video-info-container{
+  padding: 5px;
+}
+
 .footer {
   margin-top: 1%;
   text-align: right;
@@ -309,6 +312,7 @@
 
 @media only screen and (max-width: 768px) {
  .footer{
-   margin-top: 435px;
+   margin-top: 20px;
  }
 }
+

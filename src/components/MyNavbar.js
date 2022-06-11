@@ -27,7 +27,7 @@ const MyNavbar = () => {
 
   const changeThemeDark = () => {
     const body = document.querySelector("body");
-    body.style.setProperty(`background`, `linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 45%, rgba(2,0,36,1) 100%)`, `important`);
+    body.style.setProperty(`background-image`, `linear-gradient( 110.1deg,  rgba(30,2,83,1) 44.2%, rgba(198,55,160,1) 138.2% )`, `important`);
     setTheme((theme) => ({ ...theme, text: "white", navbar:"navbar-dark" }));
     setDark("none");
     setLight("flex");
@@ -35,7 +35,7 @@ const MyNavbar = () => {
 
   const changeThemeLight = () => {
     const body = document.querySelector("body");
-    body.style.setProperty(`background`, `radial-gradient(circle, rgba(174,231,238,1) 0%, rgba(148,193,233,1) 0%)`, `important`);
+    body.style.setProperty(`background-image`, `linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)`, `important`);
     setTheme((theme) => ({ ...theme, text: "black", navbar:"navbar-light" }));
     setDark("flex");
     setLight("none");
