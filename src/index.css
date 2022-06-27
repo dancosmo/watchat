@@ -1,12 +1,15 @@
-html{
-  height: 100%;
-}
 body {
-  min-height: 100%;
-  background-color: #4158D0;
-  background: linear-gradient( 110.1deg,  rgba(30,2,83,1) 44.2%, rgba(198,55,160,1) 138.2% );
-  margin: 0;
-  font-family: 'Sora', sans-serif !important;
+  background: linear-gradient(
+      110.1deg,
+      rgba(30, 2, 83, 1) 44.2%,
+      rgba(198, 55, 160, 1) 138.2%
+    )
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Cairo', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

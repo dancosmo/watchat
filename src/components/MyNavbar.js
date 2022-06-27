@@ -1,44 +1,54 @@
-import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import Container from "react-bootstrap/Container";
-import { auth, db } from "../firebase";
-import { signOut } from "firebase/auth";
-import { updateDoc, doc } from "firebase/firestore";
-import { AuthContext } from "./context/auth";
-import Button from "react-bootstrap/Button";
-import LightTheme from "./svg/LightTheme";
-import DarkTheme from "./svg/DarkTheme";
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+import { auth, db } from '../firebase';
+import { signOut } from 'firebase/auth';
+import { updateDoc, doc } from 'firebase/firestore';
+import { AuthContext } from './context/auth';
+import Button from 'react-bootstrap/Button';
+import LightTheme from './svg/LightTheme';
+import DarkTheme from './svg/DarkTheme';
 
 const MyNavbar = () => {
-  const [dark, setDark] = useState("none");
-  const [light, setLight] = useState("flex");
-  const navigate = useNavigate();
+  const [dark, setDark] = useState('none');
+  const [light, setLight] = useState(true);
   const { user } = useContext(AuthContext);
   const { theme, setTheme } = useContext(AuthContext);
+
   const handleSignOut = async () => {
-    await updateDoc(doc(db, "users", auth.currentUser.uid), {
+    await updateDoc(doc(db, 'users', auth.currentUser.uid), {
       isOnline: false,
     });
     await signOut(auth);
-    navigate("/login");
+    navigate('/login');
   };
 
+  const navigate = useNavigate();
+
   const changeThemeDark = () => {
-    const body = document.querySelector("body");
-    body.style.setProperty(`background-image`, `linear-gradient( 110.1deg,  rgba(30,2,83,1) 44.2%, rgba(198,55,160,1) 138.2% )`, `important`);
-    setTheme((theme) => ({ ...theme, text: "white", navbar:"navbar-dark" }));
-    setDark("none");
-    setLight("flex");
+    const body = document.querySelector('body');
+    body.style.setProperty(
+      'background-image',
+      'linear-gradient( 110.1deg,  rgba(30,2,83,1) 44.2%, rgba(198,55,160,1) 138.2% )',
+      'important'
+    );
+    setTheme((theme) => ({ ...theme, text: 'white', navbar: 'navbar-dark' }));
+    setDark('none');
+    setLight('flex');
   };
 
   const changeThemeLight = () => {
-    const body = document.querySelector("body");
-    body.style.setProperty(`background-image`, `linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)`, `important`);
-    setTheme((theme) => ({ ...theme, text: "black", navbar:"navbar-light" }));
-    setDark("flex");
-    setLight("none");
+    const body = document.querySelector('body');
+    body.style.setProperty(
+      'background-image',
+      'linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%)',
+      'important'
+    );
+    setTheme((theme) => ({ ...theme, text: 'black', navbar: 'navbar-light' }));
+    setDark('flex');
+    setLight('none');
   };
 
   return (
@@ -57,7 +67,7 @@ const MyNavbar = () => {
           {user ? (
             <Nav
               className="me-2 my-2 my-lg-0 "
-              style={{ maxHeight: "100px" }}
+              style={{ maxHeight: '100px' }}
               navbarScroll
             >
               <Nav.Item>
@@ -91,7 +101,7 @@ const MyNavbar = () => {
               <Nav.Item style={{ display: `${dark}` }}>
                 <Button
                   style={{
-                    backgroundColor: `${theme.background}`,
+                    backgroundColor: `${theme.elementBackground}`,
                     border: `${theme.border}`,
                   }}
                   onClick={() => changeThemeDark()}
@@ -102,7 +112,7 @@ const MyNavbar = () => {
               <Nav.Item style={{ display: `${light}` }}>
                 <Button
                   style={{
-                    backgroundColor: `${theme.background}`,
+                    backgroundColor: `${theme.elementBackground}`,
                     border: `${theme.border}`,
                   }}
                   onClick={() => changeThemeLight()}
@@ -114,7 +124,7 @@ const MyNavbar = () => {
           ) : (
             <Nav
               className="me-2 my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
+              style={{ maxHeight: '100px' }}
               navbarScroll
             >
               <Nav.Item>
@@ -138,7 +148,7 @@ const MyNavbar = () => {
               <Nav.Item style={{ display: `${dark}` }}>
                 <Button
                   style={{
-                    backgroundColor: `${theme.background}`,
+                    backgroundColor: `${theme.elementBackground}`,
                     border: `${theme.border}`,
                   }}
                   onClick={() => changeThemeDark()}
@@ -149,7 +159,7 @@ const MyNavbar = () => {
               <Nav.Item style={{ display: `${light}` }}>
                 <Button
                   style={{
-                    backgroundColor: `${theme.background}`,
+                    backgroundColor: `${theme.elementBackground}`,
                     border: `${theme.border}`,
                   }}
                   onClick={() => changeThemeLight()}

@@ -1,14 +1,14 @@
-import React, { useState, useContext } from "react";
-import InputGroup from "react-bootstrap/InputGroup";
-import Button from "react-bootstrap/Button";
-import FormControl from "react-bootstrap/FormControl";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import { AuthContext } from "./context/auth";
+import React, { useState, useContext } from 'react';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
+import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import { AuthContext } from './context/auth';
 
 const VideoSearch = ({ onSearchSubmit }) => {
-  const [term, setTerm] = useState("");
-  const { theme } = useContext(AuthContext); 
+  const [term, setTerm] = useState('');
+  const { theme } = useContext(AuthContext);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -16,7 +16,7 @@ const VideoSearch = ({ onSearchSubmit }) => {
   };
 
   return (
-    <Container >
+    <Container style={{ paddingRight: '22px', marginRight: '0px' }}>
       <Form onSubmit={onFormSubmit}>
         <InputGroup className="mb-3">
           <FormControl
@@ -26,13 +26,17 @@ const VideoSearch = ({ onSearchSubmit }) => {
             value={term}
             onChange={(e) => setTerm(e.target.value)}
           />
-          <Button style={{color:`${theme.text}`}} type="submit" variant="outline-secondary" id="button-addon2">
+          <Button
+            style={{ color: `${theme.text}` }}
+            type="submit"
+            variant="outline-secondary"
+            id="button-addon2"
+          >
             Search
           </Button>
         </InputGroup>
       </Form>
-      <div>
-      </div>
+      <div></div>
     </Container>
   );
 };
