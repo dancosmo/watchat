@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
-import { AuthContext } from "./context/auth";
-import { db, auth } from "../firebase";
+import React, { useState, useContext, useEffect } from 'react';
+import { AuthContext } from './context/auth';
+import { db, auth } from '../firebase';
 import {
   collection,
   query,
@@ -11,31 +11,31 @@ import {
   doc,
   setDoc,
   getDoc,
-} from "firebase/firestore";
-import Message from "./Message";
-import Reply from "./svg/Reply";
-import Button from "react-bootstrap/Button";
-import Collapse from "react-bootstrap/Collapse";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Img from "./icons/user.png";
-import Invite from "./svg/Invite";
-import UpArrow from "./svg/UpArrow";
-import DownArrow from "./svg/DownArrow";
+} from 'firebase/firestore';
+import Message from './Message';
+import Reply from './svg/Reply';
+import Button from 'react-bootstrap/Button';
+import Collapse from 'react-bootstrap/Collapse';
+import Container from 'react-bootstrap/Container';
+import Form from 'react-bootstrap/Form';
+import Img from './icons/user.png';
+import Invite from './svg/Invite';
+import UpArrow from './svg/UpArrow';
+import DownArrow from './svg/DownArrow';
 
 const MessengerForm = ({ selectedUser, user1, inviteToWatchVideo }) => {
   const [open, setOpen] = useState(true);
-  const [text, setText] = useState("");
+  const [text, setText] = useState('');
   const [msgs, setMsgs] = useState([]);
-  const [hideArrowUp, setHideArrowUp] = useState("none");
-  const [hideArrowDown, setHideArrowDown] = useState("flex");
+  const [hideArrowUp, setHideArrowUp] = useState('none');
+  const [hideArrowDown, setHideArrowDown] = useState('flex');
   const { theme } = useContext(AuthContext);
 
   useEffect(() => {
     const user2 = selectedUser?.uid;
     const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
-    const msgsRef = collection(db, "messages", id, "chat");
-    const q = query(msgsRef, orderBy("createdAt", "asc"));
+    const msgsRef = collection(db, 'messages', id, 'chat');
+    const q = query(msgsRef, orderBy('createdAt', 'asc'));
     const getMessages = onSnapshot(q, (querySnapshot) => {
       let msgs = [];
       querySnapshot.forEach((doc) => {
@@ -53,21 +53,21 @@ const MessengerForm = ({ selectedUser, user1, inviteToWatchVideo }) => {
   const inviteToWatch = async () => {
     const user2 = selectedUser.uid;
     const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
-    const currentVideo = await getDoc(doc(db, "users", user1));
+    const currentVideo = await getDoc(doc(db, 'users', user1));
 
-    if(!currentVideo?.data().currentVideo){
-      return alert("Please start watching a video to share it")
+    if (!currentVideo?.data().currentVideo) {
+      return alert('Please start watching a video to share it');
     }
-    
+
     const getCurrentVideo = currentVideo.data().currentVideo;
-    await addDoc(collection(db, "messages", id, "chat"), {
+    await addDoc(collection(db, 'messages', id, 'chat'), {
       text: { getCurrentVideo },
       from: user1,
       to: user2,
       createdAt: Timestamp.fromDate(new Date()),
     });
-    await setDoc(doc(db, "lastMessages", id), {
-      text: "video invitation",
+    await setDoc(doc(db, 'lastMessages', id), {
+      text: 'video invitation',
       from: user1,
       to: user2,
       createdAt: Timestamp.fromDate(new Date()),
@@ -115,29 +115,29 @@ const MessengerForm = ({ selectedUser, user1, inviteToWatchVideo }) => {
     e.preventDefault();
     const user2 = selectedUser.uid;
     const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
-    await addDoc(collection(db, "messages", id, "chat"), {
+    await addDoc(collection(db, 'messages', id, 'chat'), {
       text: text,
       from: user1,
       to: user2,
       createdAt: Timestamp.fromDate(new Date()),
     });
-    await setDoc(doc(db, "lastMessages", id), {
+    await setDoc(doc(db, 'lastMessages', id), {
       text: text,
       from: user1,
       to: user2,
       createdAt: Timestamp.fromDate(new Date()),
       unread: true,
     });
-    setText("");
+    setText('');
   };
 
   const hideArrows = () => {
-    if (hideArrowDown === "flex") {
-      setHideArrowUp("flex");
-      setHideArrowDown("none");
-    } else if (hideArrowUp === "flex") {
-      setHideArrowUp("none");
-      setHideArrowDown("flex");
+    if (hideArrowDown === 'flex') {
+      setHideArrowUp('flex');
+      setHideArrowDown('none');
+    } else if (hideArrowUp === 'flex') {
+      setHideArrowUp('none');
+      setHideArrowDown('flex');
     }
   };
 
@@ -152,7 +152,7 @@ const MessengerForm = ({ selectedUser, user1, inviteToWatchVideo }) => {
             }}
           >
             <img
-              style={{ width: "30px", marginRight: "5px", borderRadius: "50%" }}
+              style={{ width: '30px', marginRight: '5px', borderRadius: '10%' }}
               alt="avatar"
               src={selectedUser.avatar || Img}
             ></img>
@@ -160,8 +160,9 @@ const MessengerForm = ({ selectedUser, user1, inviteToWatchVideo }) => {
             <button
               style={{
                 color: `${theme.text}`,
-                backgroundColor: "transparent",
-                border: "none",
+                backgroundColor: theme.elementBackground,
+                borderRadius: '5%',
+                border: 'white',
               }}
               onClick={() => inviteToWatch()}
             >
@@ -177,9 +178,9 @@ const MessengerForm = ({ selectedUser, user1, inviteToWatchVideo }) => {
               aria-expanded={open}
               className="user-chat-box"
               style={{
-                backgroundColor: `${theme.background}`,
-                borderColor: `${theme.border}`,
-                borderRadius: "50px",
+                backgroundColor: 'transparent',
+                borderRadius: '10%',
+                border: 'none',
               }}
             >
               <UpArrow themeColor={theme.text} display={hideArrowUp} />
@@ -211,7 +212,7 @@ const MessengerForm = ({ selectedUser, user1, inviteToWatchVideo }) => {
       );
     } else
       return (
-        <div style={{ color: `${theme.text}` }}>
+        <div style={{ color: `${theme.text}`, textAlign: 'center' }}>
           <h5>You are not chatting with anyone</h5>
         </div>
       );

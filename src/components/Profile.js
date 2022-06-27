@@ -1,26 +1,26 @@
-import React, { useEffect, useState, useContext } from "react";
-import { AuthContext } from "./context/auth";
-import Container from "react-bootstrap/esm/Container";
-import Img from "./icons/user.png";
-import TrashIcon from "./svg/TrashIcon";
-import UserAvatar from "./svg/UserAvatar";
-import { storage, db, auth } from "../firebase";
+import React, { useEffect, useState, useContext } from 'react';
+import { AuthContext } from './context/auth';
+import Container from 'react-bootstrap/esm/Container';
+import Img from './icons/user.png';
+import TrashIcon from './svg/TrashIcon';
+import UserAvatar from './svg/UserAvatar';
+import { storage, db, auth } from '../firebase';
 import {
   ref,
   getDownloadURL,
   uploadBytes,
   deleteObject,
-} from "firebase/storage";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+} from 'firebase/storage';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
-  const [img, setImg] = useState("");
-  const [user, setUser] = useState("");
+  const [img, setImg] = useState('');
+  const [user, setUser] = useState('');
   const userData = useContext(AuthContext);
   const { theme } = useContext(AuthContext);
-  const navigate = useNavigate(); 
- 
+  const navigate = useNavigate();
+
   const userTimeStamp = userData.user.metadata.creationTime;
 
   useEffect(() => {
@@ -37,25 +37,25 @@ const Profile = () => {
           const snap = await uploadBytes(imgRef, img);
           const url = await getDownloadURL(ref(storage, snap.ref.fullPath));
 
-          await updateDoc(doc(db, "users", auth.currentUser.uid), {
+          await updateDoc(doc(db, 'users', auth.currentUser.uid), {
             avatar: url,
             avatarPath: snap.ref.fullPath,
           });
         } catch (err) {
           console.log(err.message);
         }
-        setImg("");
+        setImg('');
       };
       uploadImg();
     }
     const getUserName = async () => {
-      const userRef = doc(db, "users", `${auth.currentUser.uid}`);
+      const userRef = doc(db, 'users', `${auth.currentUser.uid}`);
       const docSnap = await getDoc(userRef);
 
       if (docSnap.exists()) {
         setUser(docSnap.data());
       } else {
-        console.log("user not found");
+        console.log('user not found');
       }
     };
     getUserName();
@@ -63,14 +63,14 @@ const Profile = () => {
 
   const deleteUserAvatar = async () => {
     try {
-      const confirm = window.confirm('delete avatar')
-      if(confirm) {
+      const confirm = window.confirm('delete avatar');
+      if (confirm) {
         await deleteObject(ref(storage, user.avatarPath));
-        await updateDoc(doc(db, "users", auth.currentUser.uid),{
-          avatar:"",
-          avatarPath:"",
+        await updateDoc(doc(db, 'users', auth.currentUser.uid), {
+          avatar: '',
+          avatarPath: '',
         });
-        navigate("/")
+        navigate('/');
       }
     } catch (err) {
       console.log(err.message);
@@ -87,19 +87,21 @@ const Profile = () => {
               <UserAvatar />
             </label>
             <label>
-              {user.avatar ? <TrashIcon deleteUserAvatar={deleteUserAvatar} /> : null}
+              {user.avatar ? (
+                <TrashIcon deleteUserAvatar={deleteUserAvatar} />
+              ) : null}
             </label>
             <input
               type="file"
               accept="image/*"
-              style={{ display: "none" }}
+              style={{ display: 'none' }}
               id="photo"
               onChange={(e) => setImg(e.target.files[0])}
             />
           </div>
         </div>
       </Container>
-      <Container style={{color:`${theme.text}`}}>
+      <Container style={{ color: `${theme.text}`, marginTop: '5%' }}>
         <h3>User Name: {user.name} </h3>
         <p>User Email: {user.email}</p>
         <p>Joined: {userTimeStamp.substring(0, 17)}</p>

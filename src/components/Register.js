@@ -1,27 +1,27 @@
-import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../firebase";
-import GoogleSignIn from "./GoogleSignIn";
-import { setDoc, doc, Timestamp } from "firebase/firestore";
-import { AuthContext } from "./context/auth";
+import React, { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../firebase';
+import GoogleSignIn from './GoogleSignIn';
+import { setDoc, doc, Timestamp } from 'firebase/firestore';
+import { AuthContext } from './context/auth';
 
 const Register = () => {
   const { theme } = useContext(AuthContext);
   // Some styling for the Form container because is convering the entire width of the body
   const StyledContainer = {
-    maxWidth: "400px",
+    maxWidth: '400px',
   };
   //-----------------------------------------------------------------------------------------------------
   // Here we are defining the state object with the variables we are going to use in this component
   const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    error: "",
+    name: '',
+    email: '',
+    password: '',
+    error: '',
     loading: false,
   });
 
@@ -42,18 +42,18 @@ const Register = () => {
     //-----------------------------------------------------------------------------------------------------
     // the if statement throws and error if any of the variables on the fields is empty
     if (!name || !email || !password) {
-      setData({ ...data, error: "All fields are required" });
+      setData({ ...data, error: 'All fields are required' });
       console.log(error);
       return;
     }
     //-----------------------------------------------------------------------------------------------------
-    else if (name.length > 12){
-      setData({...data, error: "name must have less than 12 characters" });
+    else if (name.length > 12) {
+      setData({ ...data, error: 'name must have less than 12 characters' });
       console.log(error);
       return;
     }
     //-----------------------------------------------------------------------------------------------------
-    else if(error === null){
+    else if (error === null) {
       setData({ ...data, error: null, loading: true });
     }
     try {
@@ -65,7 +65,7 @@ const Register = () => {
       );
       //-----------------------------------------------------------------------------------------------------
       // setDoc is a firebase method that allows me to store the users data inside firestore with a collection name "users" in the web app
-      await setDoc(doc(db, "users", result.user.uid), {
+      await setDoc(doc(db, 'users', result.user.uid), {
         uid: result.user.uid,
         name,
         email,
@@ -75,15 +75,15 @@ const Register = () => {
       //-----------------------------------------------------------------------------------------------------
       // after getting the user's data we set the properties back to its default value
       setData({
-        name: "",
-        email: "",
-        password: "",
+        name: '',
+        email: '',
+        password: '',
         error: null,
         loading: false,
       });
       //-----------------------------------------------------------------------------------------------------
       //
-      navigate("/");
+      navigate('/');
       // this method will throw an error if the user enters an already existing account or an invalid password
     } catch (err) {
       setData({ ...data, error: err.message, loading: false });
@@ -91,7 +91,11 @@ const Register = () => {
   };
   return (
     <Container style={StyledContainer}>
-      <Form style={{color:`${theme.text}`}} className="my-5" onSubmit={handleSubmit}>
+      <Form
+        style={{ color: `${theme.text}` }}
+        className="my-5"
+        onSubmit={handleSubmit}
+      >
         <Container className="text-center mb-4">
           <h4>Enter your account details</h4>
         </Container>
@@ -133,8 +137,17 @@ const Register = () => {
         </Form.Group>
         <div className="error">{error}</div>
         <Container className="text-center">
-          <Button style={{backgroundColor:`${theme.background}`, borderColor:`${theme.border}`, color:`${theme.text}`}} disabled={loading} variant="success" type="submit">
-            {loading ? "Creating..." : "Submit"}
+          <Button
+            style={{
+              backgroundColor: `${theme.elementBackground}`,
+              borderColor: `${theme.border}`,
+              color: `${theme.text}`,
+            }}
+            disabled={loading}
+            variant="success"
+            type="submit"
+          >
+            {loading ? 'Creating...' : 'Submit'}
           </Button>
         </Container>
         <Container className="text-center my-3">

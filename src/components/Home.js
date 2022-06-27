@@ -1,14 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
-import Messenger from "./Messenger";
-import { AuthContext } from "./context/auth";
-import VideoSearch from "./VideoSearch";
-import VideoList from "./VideoList";
-import useVideos from "../hooks/useVideos";
-import VideoDetail from "./VideoDetail";
+import React, { useContext, useState, useEffect } from 'react';
+import Messenger from './Messenger';
+import { AuthContext } from './context/auth';
+import VideoSearch from './VideoSearch';
+import VideoList from './VideoList';
+import useVideos from '../hooks/useVideos';
+import VideoDetail from './VideoDetail';
 
 const Home = () => {
   const { user, theme } = useContext(AuthContext);
-  const [videos, search] = useVideos("coding");
+  const [videos, search] = useVideos('coding');
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const video = (data) => {
@@ -19,9 +19,9 @@ const Home = () => {
     }
   };
 
-  const videoCallback =(data)=>{
+  const videoCallback = (data) => {
     setSelectedVideo(data.getCurrentVideo.video);
-  }
+  };
 
   useEffect(() => {
     setSelectedVideo(null);
@@ -30,13 +30,13 @@ const Home = () => {
   return (
     <div className="flex-home">
       {user ? (
-          <Messenger videoCallback={videoCallback}/>
+        <Messenger videoCallback={videoCallback} />
       ) : (
         <div
           className="no-user-container"
           style={{
-            color:`${theme.text}`,
-            backgroundColor: `${theme.background}`,
+            color: `${theme.text}`,
+            backgroundColor: `${theme.elementBackground}`,
           }}
         >
           Log In to join Chat

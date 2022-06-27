@@ -1,10 +1,18 @@
-import React, { useEffect, useState, useContext } from "react";
-import { AuthContext } from "./context/auth";
-import { db, auth } from "../firebase";
-import { collection, query, where, onSnapshot, getDoc, doc, updateDoc} from "firebase/firestore";
-import User from "./User";
-import ListGroup from "react-bootstrap/ListGroup";
-import MessengerForm from "./MessengerForm";
+import React, { useEffect, useState, useContext } from 'react';
+import { AuthContext } from './context/auth';
+import { db, auth } from '../firebase';
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  getDoc,
+  doc,
+  updateDoc,
+} from 'firebase/firestore';
+import User from './User';
+import ListGroup from 'react-bootstrap/ListGroup';
+import MessengerForm from './MessengerForm';
 
 const Messenger = ({ videoCallback }) => {
   const [users, setUsers] = useState([]);
@@ -13,11 +21,11 @@ const Messenger = ({ videoCallback }) => {
   const user1 = auth.currentUser.uid;
 
   useEffect(() => {
-    const usersReference = collection(db, "users");
+    const usersReference = collection(db, 'users');
     //Now we are going to create the query object
     const q = query(
       usersReference,
-      where("uid", "not-in", [auth.currentUser.uid])
+      where('uid', 'not-in', [auth.currentUser.uid])
     );
     const listOfUsers = onSnapshot(q, (querySnapshot) => {
       let users = [];
@@ -39,9 +47,9 @@ const Messenger = ({ videoCallback }) => {
     setSelectedUser(user);
     const user2 = selectedUser?.uid;
     const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
-    const unreadCheck = await getDoc(doc(db, "lastMessages", id));
+    const unreadCheck = await getDoc(doc(db, 'lastMessages', id));
     if (unreadCheck.data()?.from !== user1) {
-      await updateDoc(doc(db, "lastMessages", id), {
+      await updateDoc(doc(db, 'lastMessages', id), {
         unread: false,
       });
     }
@@ -65,7 +73,7 @@ const Messenger = ({ videoCallback }) => {
         <ListGroup>{renderUsers()}</ListGroup>
       </div>
       <div
-        style={{ backgroundColor: `${theme.background}` }}
+        style={{ backgroundColor: `${theme.elementBackground}` }}
         className="message-form-container px-2 py-2"
       >
         <MessengerForm
