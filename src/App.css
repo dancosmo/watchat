@@ -251,7 +251,7 @@
 
 .video-list {
   max-height: 80vh;
-  overflow-y: overlay;
+  overflow-y: scroll;
 }
 
 .video-list::-webkit-scrollbar {
